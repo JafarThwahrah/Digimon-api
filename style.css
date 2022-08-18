@@ -1,0 +1,45 @@
+*{
+    margin:0;
+    padding :0;
+    box-sizing: border-box;
+}
+
+
+
+
+body {
+
+     background-color: black;
+    
+}
+
+/* 
+main{
+    background-color: rgb(151, 186, 223);
+} */
+
+
+p {
+    margin: 0;
+}
+nav{
+    position: sticky;
+    
+}
+
+
+
+
+
+.cardscontainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+
+footer {
+    background-color: antiquewhite;
+    position: sticky;
+}
