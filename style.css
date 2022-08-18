@@ -43,3 +43,25 @@ footer {
     background-color: antiquewhite;
     position: sticky;
 }
+
+.hide{
+    display:none;
+}
+
+.CardsStyle{
+  /* display: inline-block; */
+  background-color: rgb(72, 15, 118) ;
+  color: white;
+  border-radius: 20px;
+  text-align: center;
+  margin: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 0 15px 5px rgba(255, 255, 255, 1);
+  opacity: 95%;
+}
+
+img {
+    border-radius: 50%;
+    margin: 1rem;
+    
+}
