@@ -56,18 +56,18 @@ function Createcard(data) {
 
     key.element=Card;
   Card.classList.add("CardsStyle")
-    // Card.style.display = "inline-block";
-    // Card.style.background ="rgb(72, 15, 118)" ;
-    // Card.style.color = "white";
-    // Card.style.borderRadius = "20px";
-    // Card.style.textAlign = "center";
-    // Img.style.borderRadius = "50%";
-    // Img.style.margin = "1rem";
-    // Card.style.margin = "1rem";
-    // Card.style.padding = "1.5rem";
-    // cardName.style.fontStyle = "italic";
-    // Card.style.boxShadow = "0 0 15px 5px rgba(255, 255, 255, 1)";
-    // Card.style.opacity = "90%";
+    Card.style.display = "inline-block";
+    Card.style.background ="rgb(72, 15, 118)" ;
+    Card.style.color = "white";
+    Card.style.borderRadius = "20px";
+    Card.style.textAlign = "center";
+    Img.style.borderRadius = "50%";
+    Img.style.margin = "1rem";
+    Card.style.margin = "1rem";
+    Card.style.padding = "1.5rem";
+    cardName.style.fontStyle = "italic";
+    Card.style.boxShadow = "0 0 15px 5px rgba(255, 255, 255, 1)";
+    Card.style.opacity = "90%";
     Card.style.transition = "transform .5s ease-in";
     let navbar= document.getElementById("NavBar");
     navbar.style.marginBottom = "2rem"
@@ -112,7 +112,19 @@ searchInput.addEventListener("input" , event=>{
   DigimonArray.forEach(Digimon =>{
     console.log(Digimon.element)
 const visible = Digimon.name.toLowerCase().includes(searched) || Digimon.level.toLowerCase().includes(searched)
-Digimon.element.classList.toggle("hide",!visible)
+
+
+
+
+
+if(visible != true){
+    Digimon.element.style.display = "none";
+}else{
+    Digimon.element.style.display = "inline-block";
+
+}
+
+// Digimon.element.classList.toggle("hide",!visible)
 })
 
 })
