@@ -1,63 +1,47 @@
-
- const DigimonArray= [];
-
+const DigimonArray = [];
 
 fetch("https://digimon-api.herokuapp.com/api/digimon")
-.then((dataResponse) => dataResponse.json())
-.then( (data)=> {
-
-// console.log(data)
-Createcard(data)
-
-
-
-} );
+  .then((dataResponse) => dataResponse.json())
+  .then((data) => {
+    // console.log(data)
+    Createcard(data);
+  });
 
 class DigimonCreator {
-  
-    constructor(Name , Level , Image) {
-        this.Name = digimonName;
-        this.Level = digimonlevel;
-        this.Image = digimonimage;
-    }
-
+  constructor(Name, Level, Image) {
+    this.Name = digimonName;
+    this.Level = digimonlevel;
+    this.Image = digimonimage;
+  }
 }
 
-
-
-
 function Createcard(data) {
-    
+  for (i = 0; i <= 19; i++) {
+    DigimonArray.push(data[i]);
+  }
 
-    for (i=0 ; i<=19;i++){
-        DigimonArray.push(data[i])
-    }
+  console.log(DigimonArray);
 
-    console.log(DigimonArray)
-
-    DigimonArray.map((key) =>{
-        let Card = document.createElement("div");
+  DigimonArray.map((key) => {
+    let Card = document.createElement("div");
 
     document.getElementById("CardsContainer").appendChild(Card);
     let Img = document.createElement("img");
     Img.src = key.img;
     Card.appendChild(Img);
-  
-  
+
     let cardName = document.createElement("h4");
     cardName.textContent = "Name:" + key.name;
     Card.appendChild(cardName);
-    
-  
+
     let Lev = document.createElement("h5");
     Lev.textContent = "Level:" + key.level;
     Card.appendChild(Lev);
 
-
-    key.element=Card;
-  Card.classList.add("CardsStyle")
+    key.element = Card;
+    Card.classList.add("CardsStyle");
     Card.style.display = "inline-block";
-    Card.style.background ="rgb(72, 15, 118)" ;
+    Card.style.background = "rgb(72, 15, 118)";
     Card.style.color = "white";
     Card.style.borderRadius = "20px";
     Card.style.textAlign = "center";
@@ -69,17 +53,15 @@ function Createcard(data) {
     Card.style.boxShadow = "0 0 15px 5px rgba(255, 255, 255, 1)";
     Card.style.opacity = "90%";
     Card.style.transition = "transform .5s ease-in";
-    let navbar= document.getElementById("NavBar");
-    navbar.style.marginBottom = "2rem"
-    navbar.style.boxShadow = "0 0 15px 5px blue"
-    navbar.style.zIndex = "10"
-    navbar.style.position = "fixed"
-    navbar.style.width = "100%"
+    let navbar = document.getElementById("NavBar");
+    navbar.style.marginBottom = "2rem";
+    navbar.style.boxShadow = "0 0 15px 5px blue";
+    navbar.style.zIndex = "10";
+    navbar.style.position = "fixed";
+    navbar.style.width = "100%";
 
-    Card.style.marginTop = "6rem"
+    Card.style.marginTop = "6rem";
 
-
-  
     Card.addEventListener("mouseenter", () => {
       Card.style.opacity = "100%";
       Card.style.boxShadow = "0 0 15px 10px rgba(255, 255, 255, 1)";
@@ -92,52 +74,30 @@ function Createcard(data) {
 
       Card.style.transform = "scale3d(1,1,1)";
     });
+  });
 
+  let searchInput = document.getElementById("srchInput");
 
+  searchInput.addEventListener("input", (event) => {
+    const searched = event.target.value.toLowerCase();
+    console.log(searched);
+    DigimonArray.forEach((Digimon) => {
+      console.log(Digimon.element);
+      const visible =
+        Digimon.name.toLowerCase().includes(searched) ||
+        Digimon.level.toLowerCase().includes(searched);
 
+      if (visible != true) {
+        Digimon.element.style.display = "none";
+      } else {
+        Digimon.element.style.display = "inline-block";
+      }
 
+      // Digimon.element.classList.toggle("hide",!visible)
+    });
+  });
 
+  // localStorage.setItem("Employees", JSON.stringify(DigimonArray));
 
-
- 
-})
-  
-
-
-let searchInput= document.getElementById("srchInput");
-  
-searchInput.addEventListener("input" , event=>{
-    const searched =event.target.value.toLowerCase();
-  console.log(searched)
-  DigimonArray.forEach(Digimon =>{
-    console.log(Digimon.element)
-const visible = Digimon.name.toLowerCase().includes(searched) || Digimon.level.toLowerCase().includes(searched)
-
-
-
-
-
-if(visible != true){
-    Digimon.element.style.display = "none";
-}else{
-    Digimon.element.style.display = "inline-block";
-
+  // saveToLocal()
 }
-
-// Digimon.element.classList.toggle("hide",!visible)
-})
-
-})
-  
-    // localStorage.setItem("Employees", JSON.stringify(DigimonArray));
-  
-    // saveToLocal()
-  
-  
-  
-  
-
-  }
-  
-
-
