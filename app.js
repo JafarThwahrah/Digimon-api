@@ -1,11 +1,33 @@
 const DigimonArray = [];
+const DigimonArray2 = [];
 
-fetch("https://digimon-api.herokuapp.com/api/digimon")
-  .then((dataResponse) => dataResponse.json())
-  .then((data) => {
-    // console.log(data)
-    Createcard(data);
-  });
+async function dataSourceNames() {
+  try {
+    const res = await fetch("https://digimon-api.herokuapp.com/api/digimon");
+    const data = await res.json();
+    console.log(data);
+    data.map((key) => {
+      // console.log(key.name)
+      DigimonArray2.push(key.name);
+    });
+  } catch (err) {
+    throw err;
+  }
+}
+
+console.log(DigimonArray2);
+
+dataSourceNames();
+
+async function dataSource() {
+  await fetch("https://digimon-api.herokuapp.com/api/digimon")
+    .then((dataResponse) => dataResponse.json())
+    .then((data) => {
+      Createcard(data);
+    });
+}
+
+dataSource();
 
 class DigimonCreator {
   constructor(Name, Level, Image) {
